@@ -1,0 +1,61 @@
+<idea-plugin>
+    <id>com.github.benchmarkr.benchmarkr-clion-plugin</id>
+    <name>Benchmarkr</name>
+    <vendor email="apps@tylerweiss.dev" url="https://github.com/tnweiss/benchmarkr-java">Benchmarkr</vendor>
+
+    <description><![CDATA[
+        Adds Gutter run configuration actions for the benchmarkr library.
+        <br><br>
+        Refer to <a href="https://github.com/tnweiss/Benchmarkr-cpp">Benchmarkr CPP</a>
+        for instructions on how to set up a test.
+        <br><br>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.clion</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <runLineMarkerContributor
+                language="ObjectiveC"
+                implementationClass="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrRunLineMarkerContributor"
+        />
+
+        <applicationService
+                serviceImplementation="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrSettingsState"
+        />
+
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrSettingsConfigurable"
+                id="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrSettingsConfigurable"
+                displayName="Benchmarkr"
+        />
+
+        <notificationGroup id="Benchmarkr Notification Group"
+                           displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+<!--        <action-->
+<!--                id="Benchmarkr.upload"-->
+<!--                class="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrUploadAnAction"-->
+<!--                text="Upload Results"-->
+<!--                description="Upload test results">-->
+<!--            <add-to-group group-id="ToolsMenu"/>-->
+<!--        </action>-->
+
+        <group
+            id="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrActions"
+            class="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrActionsGroup"
+            text="Benchmarkr"
+            popup="true"
+        >
+            <add-to-group group-id="ToolsMenu"/>
+            <action
+                id="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrUploadAnAction"
+                class="com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrUploadAnAction"
+                text="Upload Results"
+                description="Upload test results"/>
+        </group>
+    </actions>
+</idea-plugin>

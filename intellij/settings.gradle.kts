@@ -1,0 +1,1 @@
+rootProject.name = "benchmarkr-intellij-plugin"
