@@ -1,4 +1,4 @@
-package com.github.benchmarkr.benchmarkrclionplugin;
+package com.github.benchmarkr.settings;
 
 import com.github.benchmarkr.executable.BenchmarkrBinaryDiscovery;
 import com.intellij.openapi.application.ApplicationManager;

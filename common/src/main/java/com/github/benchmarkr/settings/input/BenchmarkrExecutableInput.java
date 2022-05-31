@@ -1,8 +1,6 @@
-package com.github.benchmarkr.benchmarkrclionplugin.input;
+package com.github.benchmarkr.settings.input;
 
-import javax.swing.*;
-
-import com.github.benchmarkr.benchmarkrclionplugin.BenchmarkrSettingsState;
+import com.github.benchmarkr.settings.BenchmarkrSettingsState;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.ui.panel.ComponentPanelBuilder;

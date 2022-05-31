@@ -1,4 +1,4 @@
-package com.github.benchmarkr.benchmarkrclionplugin.input;
+package com.github.benchmarkr.settings.input;
 
 import javax.swing.*;
 

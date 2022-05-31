@@ -1,13 +1,13 @@
-package com.github.benchmarkr.benchmarkrclionplugin;
+package com.github.benchmarkr.settings;
 
 import javax.swing.*;
 
-import com.github.benchmarkr.benchmarkrclionplugin.input.BenchmarkrExecutableInput;
-import com.github.benchmarkr.benchmarkrclionplugin.input.ElasticsearchUrlInput;
-import com.github.benchmarkr.benchmarkrclionplugin.input.KibanaUrlInput;
-import com.github.benchmarkr.benchmarkrclionplugin.input.PasswordInput;
-import com.github.benchmarkr.benchmarkrclionplugin.input.TestConnectionButton;
-import com.github.benchmarkr.benchmarkrclionplugin.input.UsernameInput;
+import com.github.benchmarkr.settings.input.BenchmarkrExecutableInput;
+import com.github.benchmarkr.settings.input.ElasticsearchUrlInput;
+import com.github.benchmarkr.settings.input.KibanaUrlInput;
+import com.github.benchmarkr.settings.input.PasswordInput;
+import com.github.benchmarkr.settings.input.TestConnectionButton;
+import com.github.benchmarkr.settings.input.UsernameInput;
 import com.intellij.openapi.ui.DescriptionLabel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.util.ui.UI;

@@ -1,5 +1,6 @@
 package com.github.benchmarkr.benchmarkrclionplugin;
 
+import com.github.benchmarkr.BenchmarkrIcons;
 import com.intellij.execution.lineMarker.RunLineMarkerContributor;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiElement;
