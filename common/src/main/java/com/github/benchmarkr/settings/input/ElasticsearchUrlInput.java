@@ -14,7 +14,7 @@ public class ElasticsearchUrlInput {
   public ElasticsearchUrlInput(BenchmarkrSettingsState state) {
     elasticsearchUrl = new JTextField();
 
-    elasticsearchUrl.setText(state.elasticsearchUrl);
+    elasticsearchUrl.setText(state.getElasticsearchUrl());
   }
 
   public ComponentPanelBuilder getComponentBuilder() {

@@ -14,7 +14,7 @@ public class UsernameInput {
   public UsernameInput(BenchmarkrSettingsState state) {
     username = new JTextField();
 
-    username.setText(state.username);
+    username.setText(state.getUsername());
   }
 
   public ComponentPanelBuilder getComponentBuilder() {

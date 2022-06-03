@@ -7,19 +7,18 @@ import com.github.benchmarkr.settings.input.ElasticsearchUrlInput;
 import com.github.benchmarkr.settings.input.KibanaUrlInput;
 import com.github.benchmarkr.settings.input.PasswordInput;
 import com.github.benchmarkr.settings.input.TestConnectionButton;
+import com.github.benchmarkr.settings.input.TestConnectionContext;
 import com.github.benchmarkr.settings.input.UsernameInput;
-import com.intellij.openapi.ui.DescriptionLabel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.util.ui.UI;
 
-public class BenchmarkrSettingsComponent {
+public class BenchmarkrSettingsComponent implements TestConnectionContext {
 
   private final BenchmarkrExecutableInput benchmarkrExecutableInput;
   private final UsernameInput usernameInput;
   private final PasswordInput passwordInput;
   private final ElasticsearchUrlInput elasticsearchUrlInput;
   private final KibanaUrlInput kibanaUrlInput;
-  private final TestConnectionButton testConnectionButton;
   private final JPanel mainPanel;
 
   public BenchmarkrSettingsComponent() {
@@ -32,8 +31,6 @@ public class BenchmarkrSettingsComponent {
     passwordInput = new PasswordInput(state);
     elasticsearchUrlInput = new ElasticsearchUrlInput(state);
     kibanaUrlInput = new KibanaUrlInput(state);
-    DescriptionLabel descriptionLabel = new DescriptionLabel("");
-    testConnectionButton = new TestConnectionButton(benchmarkrExecutableInput, descriptionLabel, usernameInput, passwordInput);
 
     // create executable configuration panel
     JPanel benchmarkrPanel = UI.PanelFactory.grid().splitColumns()
@@ -50,33 +47,28 @@ public class BenchmarkrSettingsComponent {
         .createPanel();
     elkPanel.setBorder(IdeBorderFactory.createTitledBorder("ELK Configuration"));
 
-    // create remote config panel
-    JPanel testConnection = UI.PanelFactory.grid().splitColumns()
-        .add(testConnectionButton.getComponentBuilder())
-        .add(UI.PanelFactory.panel(descriptionLabel))
-        .createPanel();
-    testConnection.setBorder(IdeBorderFactory.createTitledBorder("Test Connection"));
-
     // create the main panel
     mainPanel = UI.PanelFactory.grid().splitColumns()
         .add(UI.PanelFactory.panel(benchmarkrPanel))
         .add(UI.PanelFactory.panel(elkPanel))
-        .add(UI.PanelFactory.panel(testConnection))
+        .add(UI.PanelFactory.panel(new TestConnectionButton(this).createPanel()))
         .createPanel();
+
+
   }
   public JPanel getPanel() {
     return mainPanel;
   }
 
-  public String getBenchmarkrExecutable() {
+  public String getExecutableAbsolutePath() {
     return benchmarkrExecutableInput.getText();
   }
 
-  public String getElasticUsername() {
+  public String getUsername() {
     return usernameInput.getText();
   }
 
-  public String getElasticPassword() {
+  public String getPassword() {
     return passwordInput.getText();
   }
 

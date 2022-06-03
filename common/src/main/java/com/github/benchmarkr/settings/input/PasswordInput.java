@@ -14,7 +14,7 @@ public class PasswordInput {
   public PasswordInput(BenchmarkrSettingsState state) {
     password = new JPasswordField();
 
-    password.setText(state.password);
+    password.setText(state.getPassword());
   }
 
   public ComponentPanelBuilder getComponentBuilder() {

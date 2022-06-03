@@ -14,7 +14,7 @@ public class KibanaUrlInput {
   public KibanaUrlInput(BenchmarkrSettingsState state) {
     kibanaUrl = new JTextField();
 
-    kibanaUrl.setText(state.kibanaUrl);
+    kibanaUrl.setText(state.getKibanaUrl());
   }
 
   public ComponentPanelBuilder getComponentBuilder() {

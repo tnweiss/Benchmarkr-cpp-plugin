@@ -19,7 +19,7 @@ public class BenchmarkrExecutableInput {
     benchmarkrExecutable.addBrowseFolderListener(TITLE, DESCRIPTION, null,
         FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor());
 
-    benchmarkrExecutable.setText(state.benchmarkrExecutablePath);
+    benchmarkrExecutable.setText(state.getBenchmarkrExecutablePath());
   }
 
   public ComponentPanelBuilder getComponentBuilder() {
