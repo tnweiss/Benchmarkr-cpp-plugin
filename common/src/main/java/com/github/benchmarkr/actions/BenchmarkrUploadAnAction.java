@@ -1,6 +1,8 @@
 package com.github.benchmarkr.actions;
 
 import com.github.benchmarkr.BenchmarkrIcons;
+import com.github.benchmarkr.executable.BenchmarkrCommands;
+import com.github.benchmarkr.settings.BenchmarkrSettingsState;
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -26,9 +28,23 @@ public class BenchmarkrUploadAnAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
+        BenchmarkrSettingsState state = BenchmarkrSettingsState.getInstance();
+
+        String message;
+        MessageType messageType = MessageType.INFO;
+        try {
+            long rowsAffected = BenchmarkrCommands.uploadResults(state.getBenchmarkrExecutablePath(),
+                state.getUsername(), state.getPassword(), state.getElasticsearchUrl());
+
+            message = String.format("Uploaded %d results", rowsAffected);
+        } catch (Exception ex) {
+            message = ex.getMessage();
+            messageType = MessageType.ERROR;
+        }
+
         NotificationGroupManager.getInstance()
             .getNotificationGroup("Benchmarkr Notification Group")
-            .createNotification("Hello world", MessageType.INFO)
+            .createNotification(message, messageType)
             .notify(e.getProject());
     }
 }

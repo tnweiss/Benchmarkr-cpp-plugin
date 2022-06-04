@@ -11,5 +11,4 @@ public class TestDiscoverBenchmarkr {
         BenchmarkrCommands.version(BenchmarkrBinaryDiscovery.benchmarkr()), "0.0.2"
     );
   }
-
 }

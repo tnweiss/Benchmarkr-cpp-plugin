@@ -20,4 +20,5 @@ public interface BenchmarkrIcons {
     Icon BenchmarkrRunGutterIcon = AllIcons.RunConfigurations.TestState.Run;
 
     Icon UploadIcon = AllIcons.Actions.Upload;
+    Icon InitializeIcon = AllIcons.Actions.AddFile;
 }

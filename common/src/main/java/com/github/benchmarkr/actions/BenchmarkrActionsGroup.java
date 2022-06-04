@@ -14,7 +14,8 @@ public class BenchmarkrActionsGroup extends DefaultActionGroup {
 
   public BenchmarkrActionsGroup() {
     super(NAME, List.of(
-        new BenchmarkrUploadAnAction()
+        new BenchmarkrUploadAnAction(),
+        new BenchmarkrInitElkAction()
     ));
 
     super.setPopup(true);
