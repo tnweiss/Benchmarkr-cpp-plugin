@@ -3,6 +3,8 @@ package com.github.benchmarkr.executable;
 import java.io.File;
 import java.util.Optional;
 
+import com.github.benchmarkr.util.AccessibleFileVisitor;
+
 public class BenchmarkrBinaryDiscovery {
   private static final String OS_PROPERTY = "os.name";
   private static final String PATH_ENV = "PATH";
@@ -40,7 +42,7 @@ public class BenchmarkrBinaryDiscovery {
     String[] searchDirs = isWindows() ? WINDOWS_SEARCH_PATHS : LINUX_SEARCH_PATHS;
 
     return findExecutableOnPath(isWindows()? WINDOWS_BENCHMARKR_EXE : LINUX_BENCHMARKR_EXE)
-        .orElse(BenchmarkrFileVisitor.discover(searchDirs, benchmarkrExe)
+        .orElse(AccessibleFileVisitor.discover(searchDirs, benchmarkrExe)
             .orElse(""));
   }
 }

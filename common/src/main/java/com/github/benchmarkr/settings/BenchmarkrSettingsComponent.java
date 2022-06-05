@@ -8,6 +8,7 @@ import com.github.benchmarkr.settings.input.KibanaUrlInput;
 import com.github.benchmarkr.settings.input.PasswordInput;
 import com.github.benchmarkr.settings.input.TestConnectionButton;
 import com.github.benchmarkr.settings.input.TestConnectionContext;
+import com.github.benchmarkr.settings.input.UploadIntervalInput;
 import com.github.benchmarkr.settings.input.UsernameInput;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.util.ui.UI;
@@ -19,6 +20,7 @@ public class BenchmarkrSettingsComponent implements TestConnectionContext {
   private final PasswordInput passwordInput;
   private final ElasticsearchUrlInput elasticsearchUrlInput;
   private final KibanaUrlInput kibanaUrlInput;
+  private final UploadIntervalInput uploadIntervalInput;
   private final JPanel mainPanel;
 
   public BenchmarkrSettingsComponent() {
@@ -31,10 +33,12 @@ public class BenchmarkrSettingsComponent implements TestConnectionContext {
     passwordInput = new PasswordInput(state);
     elasticsearchUrlInput = new ElasticsearchUrlInput(state);
     kibanaUrlInput = new KibanaUrlInput(state);
+    uploadIntervalInput = new UploadIntervalInput(state);
 
     // create executable configuration panel
     JPanel benchmarkrPanel = UI.PanelFactory.grid().splitColumns()
         .add(benchmarkrExecutableInput.getComponentBuilder())
+        .add(uploadIntervalInput.getComponentBuilder())
         .createPanel();
     benchmarkrPanel.setBorder(IdeBorderFactory.createTitledBorder("Executable Configuration"));
 
@@ -78,5 +82,9 @@ public class BenchmarkrSettingsComponent implements TestConnectionContext {
 
   public String getKibanaUrl() {
     return kibanaUrlInput.getText();
+  }
+
+  public int getUploadInterval() {
+    return uploadIntervalInput.getInt();
   }
 }

@@ -1,4 +1,4 @@
-package com.github.benchmarkr.executable;
+package com.github.benchmarkr.util;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -12,11 +12,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class BenchmarkrFileVisitor extends SimpleFileVisitor<Path> {
+public class AccessibleFileVisitor extends SimpleFileVisitor<Path> {
   private final List<String> benchmarkrPaths;
   private final String executableName;
 
-  public BenchmarkrFileVisitor(String executableName) {
+  public AccessibleFileVisitor(String executableName) {
     this.benchmarkrPaths = new LinkedList<>();
     this.executableName = executableName;
   }
@@ -53,7 +53,7 @@ public class BenchmarkrFileVisitor extends SimpleFileVisitor<Path> {
 
   public static List<String> discover(String searchDir, String executableName) {
     try {
-      BenchmarkrFileVisitor visitor = new BenchmarkrFileVisitor(executableName);
+      AccessibleFileVisitor visitor = new AccessibleFileVisitor(executableName);
       Files.walkFileTree(Paths.get(searchDir), visitor);
       return visitor.getPaths();
     } catch (Exception ex) {
@@ -63,7 +63,7 @@ public class BenchmarkrFileVisitor extends SimpleFileVisitor<Path> {
 
   public static Optional<String> discover(String[] searchDirs, String executableName) {
     return Arrays.stream(searchDirs)
-        .flatMap(s -> BenchmarkrFileVisitor.discover(s, executableName).stream())
+        .flatMap(s -> AccessibleFileVisitor.discover(s, executableName).stream())
         .findFirst();
   }
 }

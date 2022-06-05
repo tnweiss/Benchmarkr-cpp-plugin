@@ -28,6 +28,8 @@ public class BenchmarkrSettingsState implements PersistentStateComponent<Benchma
   public static final String DEFAULT_USERNAME = "";
   public static final String DEFAULT_PASSWORD = "";
 
+  public static final int DEFAULT_UPLOAD_INTERVAL = 60;
+
 
   @Property
   private String benchmarkrExecutablePath = BenchmarkrBinaryDiscovery.benchmarkr();
@@ -37,6 +39,9 @@ public class BenchmarkrSettingsState implements PersistentStateComponent<Benchma
 
   @Property
   private String kibanaUrl = DEFAULT_KIBANA_URL;
+
+  @Property
+  private int uploadInterval = DEFAULT_UPLOAD_INTERVAL;
 
   public static BenchmarkrSettingsState getInstance() {
     return ApplicationManager.getApplication().getService(BenchmarkrSettingsState.class);
@@ -87,11 +92,18 @@ public class BenchmarkrSettingsState implements PersistentStateComponent<Benchma
     return kibanaUrl;
   }
 
+  public int getUploadInterval() {
+    return uploadInterval;
+  }
+
+  public void setUploadInterval(int uploadInterval) {
+    this.uploadInterval = uploadInterval;
+  }
+
   public String getUsername() {
     Credentials credentials = PasswordSafe.getInstance().get(credentialAttributes);
 
     if (credentials != null) {
-      System.out.println("Username: " + credentials.getUserName());
       return credentials.getUserName();
     }
 
@@ -102,7 +114,6 @@ public class BenchmarkrSettingsState implements PersistentStateComponent<Benchma
     Credentials credentials = PasswordSafe.getInstance().get(credentialAttributes);
 
     if (credentials != null) {
-      System.out.println("Password: " + credentials.getPasswordAsString());
       return credentials.getPasswordAsString();
     }
 

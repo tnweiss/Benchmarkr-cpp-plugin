@@ -18,7 +18,4 @@ public interface BenchmarkrIcons {
 
     // Icon used to denote a runnable benchmarking test
     Icon BenchmarkrRunGutterIcon = AllIcons.RunConfigurations.TestState.Run;
-
-    Icon UploadIcon = AllIcons.Actions.Upload;
-    Icon InitializeIcon = AllIcons.Actions.AddFile;
 }

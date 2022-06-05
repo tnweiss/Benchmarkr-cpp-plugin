@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Initialize remote elk indices and dashboards
  */
-public class BenchmarkrInitElkAction extends AnAction {
+public class BenchmarkrTestConnectionAction extends AnAction {
   private static final Logger log = Logger.getInstance(BenchmarkrActionsGroup.class);
-  public static final String DESCRIPTION = "Initialize ELK indices and dashboards";
+  public static final String DESCRIPTION = "Test connection to ELK stack";
   public static final String TEXT = DESCRIPTION;
 
   @Override
@@ -27,11 +27,11 @@ public class BenchmarkrInitElkAction extends AnAction {
 
   @Override
   public void actionPerformed(@NotNull AnActionEvent e) {
-    log.info("Initializing remote ELK indices and dashboards");
+    log.info("Testing ELK connection");
 
     // create the background task
     Task.Backgroundable backgroundable =
-        new BenchmarkrInitElkBackgroundable(e.getProject());
+        new BenchmarkrTestConnectionBackgroundable(e.getProject());
 
     // run the task in the background
     ApplicationManager.getApplication().invokeLater(() ->

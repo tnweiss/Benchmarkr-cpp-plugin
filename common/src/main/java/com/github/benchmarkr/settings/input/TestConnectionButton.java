@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-import com.github.benchmarkr.executable.BenchmarkrCommands;
+import com.github.benchmarkr.executable.commands.BenchmarkrCommands;
 import com.github.benchmarkr.util.Html;
 import com.intellij.openapi.ui.DescriptionLabel;
 import com.intellij.ui.IdeBorderFactory;
@@ -51,7 +51,6 @@ public class TestConnectionButton {
 
         // set the description component
         descriptionLabel.setText(htmlOutput);
-        //descriptionLabel.updateUI();
 
         // cancel the loading status
         cancelLoading();

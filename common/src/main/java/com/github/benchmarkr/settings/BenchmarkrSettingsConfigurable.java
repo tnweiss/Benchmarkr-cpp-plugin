@@ -33,7 +33,8 @@ public class BenchmarkrSettingsConfigurable implements Configurable {
         || !Objects.equals(settings.getElasticsearchUrl(), benchmarkrSettingsComponent.getElasticUrl())
         || !Objects.equals(settings.getKibanaUrl(), benchmarkrSettingsComponent.getKibanaUrl())
         || !Objects.equals(settings.getUsername(), benchmarkrSettingsComponent.getUsername())
-        || !Objects.equals(settings.getPassword(), benchmarkrSettingsComponent.getPassword());
+        || !Objects.equals(settings.getPassword(), benchmarkrSettingsComponent.getPassword())
+        || settings.getUploadInterval() != benchmarkrSettingsComponent.getUploadInterval();
   }
 
   @Override
@@ -46,5 +47,7 @@ public class BenchmarkrSettingsConfigurable implements Configurable {
     settings.setKibanaUrl(benchmarkrSettingsComponent.getKibanaUrl());
 
     settings.setCredentials(benchmarkrSettingsComponent.getUsername(), benchmarkrSettingsComponent.getPassword());
+
+    settings.setUploadInterval(benchmarkrSettingsComponent.getUploadInterval());
   }
 }

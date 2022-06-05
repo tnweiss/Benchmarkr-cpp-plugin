@@ -1,6 +1,5 @@
 package com.github.benchmarkr.actions;
 
-import com.github.benchmarkr.BenchmarkrIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -14,10 +13,10 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Upload results to remote ELK instance
  */
-public class BenchmarkrUploadAnAction extends AnAction {
+public class BenchmarkrUploadWatchAnAction extends AnAction {
     private static final Logger log = Logger.getInstance(BenchmarkrActionsGroup.class);
 
-    public static final String DESCRIPTION = "Upload test results";
+    public static final String DESCRIPTION = "Upload test results [continuous]";
     public static final String TEXT = DESCRIPTION;
 
     @Override
@@ -33,7 +32,7 @@ public class BenchmarkrUploadAnAction extends AnAction {
 
         // create the background task
         Task.Backgroundable backgroundable =
-            new BenchmarkrUploadBackgroundable(e.getProject());
+            new BenchmarkrUploadWatchBackgroundable(e.getProject());
 
         // run the task in the background
         ApplicationManager.getApplication().invokeLater(() ->
