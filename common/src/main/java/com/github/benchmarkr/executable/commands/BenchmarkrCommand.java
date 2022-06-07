@@ -47,7 +47,7 @@ public class BenchmarkrCommand {
   public BenchmarkrCommandAsyncResult executeAsync() throws BenchmarkrCommandExecutionException {
     try {
       // notify user of command
-      log.trace("Executing Async " + String.join(" ", arguments));
+      log.info("Executing Async " + String.join(" ", arguments));
 
       // run the process
       Process process = Runtime.getRuntime().exec(arguments);
