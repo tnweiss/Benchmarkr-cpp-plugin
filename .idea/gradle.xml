@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/clion" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/intellij" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -22,6 +23,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/clion" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/intellij" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -3,11 +3,12 @@ plugins {
     id("org.jetbrains.intellij") version "1.5.2"
 }
 
-group = "com.github.benchmarkr"
-version = "1.0-SNAPSHOT"
-
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation(project(":common"))
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -15,8 +16,14 @@ intellij {
     version.set("2021.2")
     type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf(
+        "java",
+        "com.intellij.java"
+//        "com.intellij.cidr.lang"
+    ))
 }
+
+tasks.register("prepareKotlinBuildScriptModel"){}
 
 tasks {
     // Set the JVM compatibility versions
